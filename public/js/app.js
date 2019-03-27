@@ -1824,6 +1824,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1863,7 +1866,7 @@ __webpack_require__.r(__webpack_exports__);
     timer: function timer() {
       var self = this; // Set the date we're counting down to
 
-      this.countDownDate = new Date(new Date().getTime() + 10000).getTime(); // Update the count down every 1 second
+      this.countDownDate = new Date(new Date().getTime() + 60000).getTime(); // Update the count down every 1 second
 
       this.time = setInterval(function () {
         // Get todays date and time
@@ -1878,7 +1881,7 @@ __webpack_require__.r(__webpack_exports__);
 
         document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s "; // If the count down is finished, write some text
 
-        if (distance < 6) {
+        if (distance < 1000) {
           clearInterval(self.time);
           self.checkAnswer();
         }
@@ -6469,7 +6472,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.container {\n    background-color: rgba(0,0,0,1);\n    color: white;\n    padding: 20px;\n}\n.container.wrong {\n    background-color: rgba(255,0,0,1);\n}\n.container.right {\n    background-color: rgba(0,255,0,1);\n}\n.button {\n    background-color: unset;\n    border: 2px solid white;\n    border-radius: 5px;\n    padding: 5px 10px;\n    transition: 250ms ease-in-out;\n    color: white;\n}\nlabel {\n    font-size: 16px;\n}\ninput{\n    border: none;\n    background-color: transparent;\n    border-bottom: 2px solid white;\n    font-size: 20px;\n    color: white;\n}\n.button:hover {\n    background-color: white;\n    color: black;\n}\n", ""]);
+exports.push([module.i, "\n.container {\n    background-color: rgba(0,0,0,1);\n    color: white;\n    padding: 20px;\n}\n.container.wrong {\n    background-color: rgba(255,0,0,1);\n}\n.container.right {\n    background-color: rgba(0,255,0,1);\n}\n.button {\n    background-color: unset;\n    border: 2px solid white;\n    border-radius: 5px;\n    padding: 5px 10px;\n    transition: 250ms ease-in-out;\n    color: white;\n}\nlabel {\n    font-size: 16px;\n}\ninput{\n    border: none;\n    background-color: transparent;\n    border-bottom: 2px solid white;\n    font-size: 20px;\n    color: white;\n}\n.button:hover {\n    background-color: white;\n    color: black;\n}\np#answer {\n    font-size: 20px;\n}\n", ""]);
 
 // exports
 
@@ -37793,7 +37796,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _vm.gotAnswerRight
-              ? _c("p", [
+              ? _c("p", { attrs: { id: "answer" } }, [
                   _vm._v("\n                        The number you needed: "),
                   _c("br"),
                   _vm._v(_vm._s(_vm.numberNeeded) + "\n                    ")
@@ -50261,8 +50264,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\larsw\Documents\Projects\it-escaperoom\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\larsw\Documents\Projects\it-escaperoom\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Code\it-escaperoom\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Code\it-escaperoom\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -15,7 +15,7 @@
                                 <button class="button" v-on:click="checkAnswer">Check</button>
                             </label>
                         </p>
-                        <p v-if="gotAnswerRight">
+                        <p id="answer" v-if="gotAnswerRight">
                             The number you needed: <br>{{numberNeeded}}
                         </p>
                     </div>
@@ -58,6 +58,9 @@
         background-color: white;
         color: black;
     }
+    p#answer {
+        font-size: 20px;
+    }
 </style>
 <script>
     export default {
@@ -99,7 +102,7 @@
             timer() {
                 let self = this;
                 // Set the date we're counting down to
-                this.countDownDate = new Date(new Date().getTime() + 10000).getTime();
+                this.countDownDate = new Date(new Date().getTime() + 60000).getTime();
                 // Update the count down every 1 second
                 this.time = setInterval(function() {
                     // Get todays date and time
@@ -114,7 +117,7 @@
                     // Display the result in the element with id="demo"
                     document.getElementById("demo").innerHTML = days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
                     // If the count down is finished, write some text
-                    if (distance < 6) {
+                    if (distance < 1000) {
                         clearInterval(self.time);
                         self.checkAnswer();
                     }
