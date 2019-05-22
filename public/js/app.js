@@ -1925,6 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1997,6 +1998,170 @@ __webpack_require__.r(__webpack_exports__);
 
       this.realAnswer = parseInt(randomstring, 2);
       return randomstring;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Fibonachi.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Fibonachi.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      fibAnswer: '',
+      fib: 0,
+      realAnswer: 0,
+      countDownDate: null,
+      containerClass: null,
+      time: null,
+      gotAnswerRight: false,
+      numberNeeded: 6
+    };
+  },
+  mounted: function mounted() {
+    this.reset();
+  },
+  methods: {
+    reset: function reset() {
+      this.generateFib();
+      this.timer();
+    },
+    checkAnswer: function checkAnswer() {
+      if (this.fibAnswer == this.realAnswer) {
+        this.containerClass = "right";
+        clearInterval(this.time);
+        this.gotAnswerRight = true;
+      } else {
+        this.containerClass = "wrong";
+        this.reset();
+      }
+
+      var self = this;
+      setInterval(function () {
+        self.containerClass = "";
+      }, 1000);
+    },
+    timer: function timer() {
+      var self = this; // Set the date we're counting down to
+
+      this.countDownDate = new Date(new Date().getTime() + 60000).getTime(); // Update the count down every 1 second
+
+      this.time = setInterval(function () {
+        // Get todays date and time
+        var now = new Date().getTime(); // Find the distance between now and the count down date
+
+        var distance = self.countDownDate - now; // Time calculations for days, hours, minutes and seconds
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+        var minutes = Math.floor(distance % (1000 * 60 * 60) / (1000 * 60));
+        var seconds = Math.floor(distance % (1000 * 60) / 1000); // Display the result in the element with id="demo"
+
+        document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s "; // If the count down is finished, write some text
+
+        if (distance < 1000) {
+          clearInterval(self.time);
+          self.checkAnswer();
+        }
+      }, 1000);
+    },
+    generateFib: function generateFib() {
+      this.randomNumber = Math.floor(Math.random() * 10 + 5);
+      this.fib = "";
+
+      for (var i = 0; i < this.randomNumber; i++) {
+        this.fib += this.fibonacci(i) + " ";
+      }
+
+      this.fib += "?";
+      this.realAnswer = this.fibonacci(this.randomNumber);
+    },
+    fibonacci: function fibonacci(num) {
+      var a = 1,
+          b = 0,
+          temp;
+
+      while (num >= 0) {
+        temp = a;
+        a = a + b;
+        b = temp;
+        num--;
+      }
+
+      return b;
     }
   }
 });
@@ -6570,7 +6735,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.container {\n    background-color: rgba(0,0,0,1);\n    color: white;\n    padding: 20px;\n    min-height: calc( 100vh - 40px );\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    align-items: center;\n    font-size: 32px;\n}\n.container.wrong {\n    background-color: rgba(255,0,0,1);\n}\n.container.right {\n    background-color: rgba(0,255,0,1);\n}\n#lost {\n    font-size: 60px;\n    text-transform: uppercase;\n}\n", ""]);
+exports.push([module.i, "\n.container {\n    background-color: rgba(0,0,0,1);\n    color: white;\n    padding: 20px;\n    min-height: calc( 60vh );\n    display: flex;\n    justify-content: center;\n    align-content: center;\n    align-items: center;\n    font-size: 32px;\n}\n.container.wrong {\n    background-color: rgba(255,0,0,1);\n}\n.container.right {\n    background-color: rgba(0,255,0,1);\n}\n#lost {\n    font-size: 60px;\n    text-transform: uppercase;\n}\n", ""]);
 
 // exports
 
@@ -6589,7 +6754,26 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.container {\n    background-color: rgba(0,0,0,1);\n    color: white;\n    padding: 20px;\n}\n.container.wrong {\n    background-color: rgba(255,0,0,1);\n}\n.container.right {\n    background-color: rgba(0,255,0,1);\n}\n.button {\n    background-color: unset;\n    border: 2px solid white;\n    border-radius: 5px;\n    padding: 5px 10px;\n    transition: 250ms ease-in-out;\n    color: white;\n}\nlabel {\n    font-size: 16px;\n}\ninput{\n    border: none;\n    background-color: transparent;\n    border-bottom: 2px solid white;\n    font-size: 20px;\n    color: white;\n}\n.button:hover {\n    background-color: white;\n    color: black;\n}\np#answer {\n    font-size: 20px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\n    background-color: rgba(0,0,0,1);\n    color: white;\n    padding: 20px;\n    max-height: 40vh;\n}\n.container.wrong {\n    background-color: rgba(255,0,0,1);\n}\n.container.right {\n    background-color: rgba(0,255,0,1);\n}\n.button {\n    background-color: unset;\n    border: 2px solid white;\n    border-radius: 5px;\n    padding: 5px 10px;\n    transition: 250ms ease-in-out;\n    color: white;\n}\nlabel {\n    font-size: 16px;\n}\ninput{\n    border: none;\n    background-color: transparent;\n    border-bottom: 2px solid white;\n    font-size: 20px;\n    color: white;\n}\n.button:hover {\n    background-color: white;\n    color: black;\n}\np#answer {\n    font-size: 20px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Fibonachi.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Fibonachi.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.container {\n    background-color: rgba(0,0,0,1);\n    color: white;\n    padding: 20px;\n    max-height: 20vh;\n}\n.container.wrong {\n    background-color: rgba(255,0,0,1);\n}\n.container.right {\n    background-color: rgba(0,255,0,1);\n}\n.button {\n    background-color: unset;\n    border: 2px solid white;\n    border-radius: 5px;\n    padding: 5px 10px;\n    transition: 250ms ease-in-out;\n    color: white;\n}\nlabel {\n    font-size: 16px;\n}\ninput{\n    border: none;\n    background-color: transparent;\n    border-bottom: 2px solid white;\n    font-size: 20px;\n    color: white;\n}\n.button:hover {\n    background-color: white;\n    color: black;\n}\np#answer {\n    font-size: 20px;\n}\n", ""]);
 
 // exports
 
@@ -37269,6 +37453,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Fibonachi.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Fibonachi.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Fibonachi.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Fibonachi.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MatrixBackground.vue?vue&type=style&index=0&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MatrixBackground.vue?vue&type=style&index=0&lang=css& ***!
@@ -37987,6 +38201,85 @@ var render = function() {
                         return
                       }
                       _vm.binaryAnswer = $event.target.value
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  { staticClass: "button", on: { click: _vm.checkAnswer } },
+                  [_vm._v("Check")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _vm.gotAnswerRight
+              ? _c("p", { attrs: { id: "answer" } }, [
+                  _vm._v("\n                        The number you needed: "),
+                  _c("br"),
+                  _vm._v(_vm._s(_vm.numberNeeded) + "\n                    ")
+                ])
+              : _vm._e()
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Fibonachi.vue?vue&type=template&id=f14a5d34&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Fibonachi.vue?vue&type=template&id=f14a5d34& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container", class: _vm.containerClass }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("span", [_vm._v("Time left:")]),
+            _c("span", { attrs: { id: "demo" } }),
+            _vm._v(" "),
+            _c("p", { attrs: { id: "binary" } }, [_vm._v(_vm._s(_vm.fib))]),
+            _vm._v(" "),
+            _c("p", [
+              _c("label", [
+                _vm._v(
+                  "\n                            Your answer:\n                            "
+                ),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.fibAnswer,
+                      expression: "fibAnswer"
+                    }
+                  ],
+                  attrs: { type: "numeric" },
+                  domProps: { value: _vm.fibAnswer },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.fibAnswer = $event.target.value
                     }
                   }
                 }),
@@ -50207,6 +50500,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
 Vue.component('countdown-component', __webpack_require__(/*! ./components/CountdownComponent.vue */ "./resources/js/components/CountdownComponent.vue").default);
 Vue.component('matrix-background', __webpack_require__(/*! ./components/MatrixBackground.vue */ "./resources/js/components/MatrixBackground.vue").default);
+Vue.component('fibonachi', __webpack_require__(/*! ./components/Fibonachi.vue */ "./resources/js/components/Fibonachi.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50446,6 +50740,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Fibonachi.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/Fibonachi.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Fibonachi_vue_vue_type_template_id_f14a5d34___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fibonachi.vue?vue&type=template&id=f14a5d34& */ "./resources/js/components/Fibonachi.vue?vue&type=template&id=f14a5d34&");
+/* harmony import */ var _Fibonachi_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fibonachi.vue?vue&type=script&lang=js& */ "./resources/js/components/Fibonachi.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Fibonachi_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fibonachi.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Fibonachi.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Fibonachi_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Fibonachi_vue_vue_type_template_id_f14a5d34___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Fibonachi_vue_vue_type_template_id_f14a5d34___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Fibonachi.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Fibonachi.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Fibonachi.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Fibonachi.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Fibonachi.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Fibonachi.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/Fibonachi.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Fibonachi.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Fibonachi.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Fibonachi.vue?vue&type=template&id=f14a5d34&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/Fibonachi.vue?vue&type=template&id=f14a5d34& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_template_id_f14a5d34___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Fibonachi.vue?vue&type=template&id=f14a5d34& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Fibonachi.vue?vue&type=template&id=f14a5d34&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_template_id_f14a5d34___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Fibonachi_vue_vue_type_template_id_f14a5d34___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

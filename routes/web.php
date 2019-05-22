@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/countdown', function () {
 	return view('countdown');
 });
+
+Route::get('/fibonachi', function () {
+	return view('fibonachi');
+});

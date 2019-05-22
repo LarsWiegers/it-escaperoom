@@ -23,6 +23,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('countdown-component', require('./components/CountdownComponent.vue').default);
 Vue.component('matrix-background', require('./components/MatrixBackground.vue').default);
+Vue.component('fibonachi', require('./components/Fibonachi.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -21,7 +21,7 @@
         background-color: rgba(0,0,0,1);
         color: white;
         padding: 20px;
-        min-height: calc( 100vh - 40px );
+        min-height: calc( 60vh );
         display: flex;
         justify-content: center;
         align-content: center;

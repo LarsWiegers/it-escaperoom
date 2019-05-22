@@ -7,11 +7,11 @@
                         <!-- Display the countdown timer in an element -->
                         <span>Time left:</span><span id="demo"></span>
 
-                        <p id="binary">{{binary}}</p>
+                        <p id="binary">{{fib}}</p>
                         <p>
                             <label>
                                 Your answer:
-                                <input type="numeric" v-model="binaryAnswer">
+                                <input type="numeric" v-model="fibAnswer">
                                 <button class="button" v-on:click="checkAnswer">Check</button>
                             </label>
                         </p>
@@ -29,7 +29,7 @@
         background-color: rgba(0,0,0,1);
         color: white;
         padding: 20px;
-        max-height: 40vh;
+        max-height: 20vh;
     }
     .container.wrong {
         background-color: rgba(255,0,0,1);
@@ -67,14 +67,14 @@
     export default {
         data() {
             return {
-                binaryAnswer: '',
-                binary: 0,
+                fibAnswer: '',
+                fib: 0,
                 realAnswer: 0,
                 countDownDate: null,
                 containerClass: null,
                 time: null,
                 gotAnswerRight: false,
-                numberNeeded: 4
+                numberNeeded: 6
             }
         },
         mounted() {
@@ -82,21 +82,21 @@
         },
         methods: {
             reset() {
-                this.binary = this.gererateRandomBinary();
+                this.generateFib();
                 this.timer();
             },
             checkAnswer() {
 
-                if(this.binaryAnswer == this.realAnswer) {
+                if (this.fibAnswer == this.realAnswer) {
                     this.containerClass = "right";
                     clearInterval(this.time);
                     this.gotAnswerRight = true;
-                }else {
+                } else {
                     this.containerClass = "wrong";
                     this.reset();
                 }
                 let self = this;
-                setInterval(function() {
+                setInterval(function () {
                     self.containerClass = "";
                 }, 1000);
             },
@@ -105,7 +105,7 @@
                 // Set the date we're counting down to
                 this.countDownDate = new Date(new Date().getTime() + 60000).getTime();
                 // Update the count down every 1 second
-                this.time = setInterval(function() {
+                this.time = setInterval(function () {
                     // Get todays date and time
                     let now = new Date().getTime();
                     // Find the distance between now and the count down date
@@ -116,7 +116,7 @@
                     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
                     // Display the result in the element with id="demo"
-                    document.getElementById("demo").innerHTML = days + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+                    document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
                     // If the count down is finished, write some text
                     if (distance < 1000) {
                         clearInterval(self.time);
@@ -124,16 +124,27 @@
                     }
                 }, 1000);
             },
-            gererateRandomBinary() {
-                var chars = "01";
-                var string_length = 6;
-                var randomstring = '';
-                for (var i=0; i<string_length; i++) {
-                    var rnum = Math.floor(Math.random() * chars.length);
-                    randomstring += chars.substring(rnum,rnum+1);
+            generateFib() {
+                this.randomNumber = Math.floor(Math.random() * 10 + 5);
+                this.fib = "";
+                for (let i = 0; i < this.randomNumber; i++) {
+                    this.fib += this.fibonacci(i) + " ";
                 }
-                this.realAnswer = parseInt(randomstring, 2);
-                return randomstring;
+                this.fib += "?";
+
+                this.realAnswer = this.fibonacci(this.randomNumber);
+            },
+            fibonacci(num) {
+                var a = 1, b = 0, temp;
+
+                while (num >= 0) {
+                    temp = a;
+                    a = a + b;
+                    b = temp;
+                    num--;
+                }
+
+                return b;
             }
         }
     }
