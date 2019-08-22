@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- Display the countdown timer in an element -->
-                        <span>Time left:</span><span id="demo"></span>
+                        <span>Time left:</span><span id="fib-demo"></span>
 
                         <p id="binary">{{fib}}</p>
                         <p>
@@ -91,6 +91,10 @@
                     this.containerClass = "right";
                     clearInterval(this.time);
                     this.gotAnswerRight = true;
+                  this.$emit('gotAnswer', {
+                    'name': 'fibonachi',
+                    'answer': this.numberNeeded,
+                  });
                 } else {
                     this.containerClass = "wrong";
                     this.reset();
@@ -116,7 +120,7 @@
                     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
                     // Display the result in the element with id="demo"
-                    document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+                    document.getElementById("fib-demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
                     // If the count down is finished, write some text
                     if (distance < 1000) {
                         clearInterval(self.time);

@@ -24,12 +24,13 @@
         </div>
     </div>
 </template>
-<style>
+<style scoped>
     .container {
         background-color: rgba(0,0,0,1);
         color: white;
         padding: 20px;
-        max-height: 40vh;
+        max-height: 40vh !important;
+        min-height: 40vh !important;
     }
     .container.wrong {
         background-color: rgba(255,0,0,1);
@@ -86,11 +87,14 @@
                 this.timer();
             },
             checkAnswer() {
-
                 if(this.binaryAnswer == this.realAnswer) {
                     this.containerClass = "right";
                     clearInterval(this.time);
                     this.gotAnswerRight = true;
+                    this.$emit('gotAnswer', {
+                      'name': 'binary',
+                      'answer': this.numberNeeded,
+                    });
                 }else {
                     this.containerClass = "wrong";
                     this.reset();

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>It escaperoom</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -18,6 +18,7 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                padding: 0;
             }
 
             .full-height {
@@ -57,23 +58,11 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body >
     <div id="app">
-        <matrix-background></matrix-background>
-        <div class="flex-center position-ref full-height">
-
-            <div class="content" >
-                <div class="title m-b-md">
-                    <example-component></example-component>
-                </div>
-            </div>
-        </div>
+        <app></app>
     </div>
     <script src="{{asset("js/app.js")}}"></script>
     </body>

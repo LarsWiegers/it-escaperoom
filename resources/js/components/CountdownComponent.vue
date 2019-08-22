@@ -21,12 +21,13 @@
         background-color: rgba(0,0,0,1);
         color: white;
         padding: 20px;
-        min-height: calc( 60vh );
+        min-height: calc( 100vh - 40px );
         display: flex;
         justify-content: center;
         align-content: center;
         align-items: center;
         font-size: 32px;
+        max-height: unset !important;
     }
     .container.wrong {
         background-color: rgba(255,0,0,1);
