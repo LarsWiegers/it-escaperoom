@@ -1885,6 +1885,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'app',
   data: function data() {
@@ -1905,15 +1938,41 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         'name': 'mors',
         'answer': null
-      }]
+      }],
+      otherAnswers: [{
+        'index': 2,
+        'answer': 8574,
+        'givenCode': 7365
+      }, {
+        'index': 3,
+        'answer': 1793,
+        'givenCode': 9264
+      }, {
+        'index': 4,
+        'answer': 4265,
+        'givenCode': 6045
+      }],
+      foundIndex: null,
+      foundAnswer: null,
+      gotAllAnswers: false,
+      hideCompPuzzels: false,
+      answerTyped: ""
     };
   },
-  computed: {
-    gotAllAnswers: function gotAllAnswers() {
-      return true;
-    }
-  },
   methods: {
+    checkAnswers: function checkAnswers() {
+      var self = this;
+      this.otherAnswers.forEach(function (answer) {
+        if (self.answerTyped == answer.givenCode) {
+          self.foundIndex = answer.index;
+          self.foundAnswer = answer.answer;
+          setTimeout(function () {
+            self.foundIndex = null;
+            self.foundAnswer = null;
+          }, 30000);
+        }
+      });
+    },
     triggerMors: function triggerMors() {
       this.showMors = !this.showMors;
     },
@@ -1928,12 +1987,28 @@ __webpack_require__.r(__webpack_exports__);
     },
     gotAnswer: function gotAnswer(data) {
       this.gameMatch.forEach(function (game) {
-        console.log(game.name, data.name, game.name === data.name);
-
         if (game.name === data.name) {
           game.answer = data.answer;
         }
       });
+      var found = false;
+
+      for (var i = 0; i < this.gameMatch.length; i++) {
+        if (this.gameMatch[i].answer === null) {
+          found = true;
+          break;
+        }
+      }
+
+      if (found) {
+        console.log("found a false");
+      } else {
+        this.gotAllAnswers = true;
+        var self = this;
+        setTimeout(function () {
+          self.hideCompPuzzels = true;
+        }, 30000);
+      }
     }
   }
 });
@@ -2072,6 +2147,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2080,15 +2156,15 @@ __webpack_require__.r(__webpack_exports__);
       containerClass: null,
       time: null,
       gotAnswerRight: false,
-      numberNeeded: 6,
+      numberNeeded: 8,
       redNumber: "",
       blueNumber: "",
       greenNumber: "",
       blackNumber: "",
-      redAnswer: 5,
-      blueAnswer: 9,
-      greenAnswer: 16,
-      blackAnswer: 64,
+      redAnswer: 1,
+      blueAnswer: 2,
+      greenAnswer: 3,
+      blackAnswer: 4,
       currentIndex: 1,
       colors: [{
         'colorName': 'red',
@@ -2123,7 +2199,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     checkAnswer: function checkAnswer() {
-      if (this.redAnswer == this.redNumber && this.blueAnswer == this.blueNumber && this.greenAnswer == this.greenNumber && this.blackAnswer == this.blackNumber) {
+      if (this.colors[0].index == this.redAnswer && this.colors[1].index == this.blueAnswer && this.colors[2].index == this.greenAnswer && this.colors[3].index == this.blackAnswer) {
         this.containerClass = "right";
         clearInterval(this.time);
         this.gotAnswerRight = true;
@@ -2215,7 +2291,7 @@ __webpack_require__.r(__webpack_exports__);
     timer: function timer() {
       var self = this; // Set the date we're counting down to
 
-      this.countDownDate = new Date(new Date().getTime() + 60000 * 20).getTime(); // Update the count down every 1 second
+      this.countDownDate = new Date(new Date().getTime() + 60000 * 8).getTime(); // Update the count down every 1 second
 
       this.time = setInterval(function () {
         // Get todays date and time
@@ -2253,9 +2329,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -2410,9 +2483,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
 //
 //
 //
@@ -7239,7 +7309,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".container[data-v-6f2b98ca] {\n  color: white;\n  padding: 20px;\n  min-height: 100vh;\n  min-width: 100vw;\n  background-color: white;\n}\n.container.wrong[data-v-6f2b98ca] {\n  background-color: rgba(230, 0, 0, 0.5);\n}\n.container.right[data-v-6f2b98ca] {\n  background-color: lime;\n}\n.button[data-v-6f2b98ca] {\n  background-color: unset;\n  border: 2px solid white;\n  border-radius: 5px;\n  padding: 5px 10px;\n  transition: 250ms ease-in-out;\n  color: white;\n}\nlabel[data-v-6f2b98ca] {\n  font-size: 16px;\n}\ninput[data-v-6f2b98ca] {\n  border: none;\n  background-color: transparent;\n  border-bottom: 2px solid white;\n  font-size: 20px;\n  color: white;\n}\n.button[data-v-6f2b98ca]:hover {\n  background-color: white;\n  color: black;\n}\np#answer[data-v-6f2b98ca] {\n  font-size: 20px;\n}\n.colors[data-v-6f2b98ca] {\n  display: flex;\n  flex-direction: row;\n}\n.color[data-v-6f2b98ca] {\n  min-width: 100px;\n  min-height: 100px;\n  margin: 0 20px;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.answers[data-v-6f2b98ca] {\n  display: flex;\n  flex-direction: row;\n}\n.answers input[data-v-6f2b98ca] {\n  min-width: 90px;\n  max-width: 88px;\n  min-height: 20px;\n  margin-left: 20px;\n  position: relative;\n  color: black;\n  border: 4px solid black;\n  margin-right: 20px;\n}\n.red[data-v-6f2b98ca] {\n  background-color: red;\n}\n.blue[data-v-6f2b98ca] {\n  background-color: blue;\n}\n.green[data-v-6f2b98ca] {\n  background-color: lime;\n}\n.black[data-v-6f2b98ca] {\n  background-color: black;\n}", ""]);
+exports.push([module.i, ".container[data-v-6f2b98ca] {\n  color: white;\n  padding: 20px;\n  min-height: 100vh;\n  min-width: 100vw;\n  background-color: white;\n}\n.container.wrong[data-v-6f2b98ca] {\n  background-color: rgba(230, 0, 0, 0.5);\n}\n.container.right[data-v-6f2b98ca] {\n  background-color: lime;\n}\n.button[data-v-6f2b98ca] {\n  background-color: unset;\n  border: 2px solid white;\n  border-radius: 5px;\n  padding: 5px 10px;\n  transition: 250ms ease-in-out;\n  color: white;\n}\nlabel[data-v-6f2b98ca] {\n  font-size: 16px;\n}\ninput[data-v-6f2b98ca] {\n  border: none;\n  background-color: transparent;\n  border-bottom: 2px solid white;\n  font-size: 20px;\n  color: white;\n}\n.button[data-v-6f2b98ca]:hover {\n  background-color: white;\n  color: black;\n}\np#answer[data-v-6f2b98ca] {\n  font-size: 20px;\n}\n.colors[data-v-6f2b98ca] {\n  display: flex;\n  flex-direction: row;\n}\n.color[data-v-6f2b98ca] {\n  min-width: 100px;\n  min-height: 100px;\n  margin: 0 20px;\n  position: relative;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  cursor: pointer;\n}\n.answers[data-v-6f2b98ca] {\n  display: flex;\n  flex-direction: row;\n}\n.answers input[data-v-6f2b98ca] {\n  min-width: 90px;\n  max-width: 88px;\n  min-height: 20px;\n  margin-left: 20px;\n  position: relative;\n  color: black;\n  border: 4px solid black;\n  margin-right: 20px;\n}\n.red[data-v-6f2b98ca] {\n  background-color: red;\n}\n.blue[data-v-6f2b98ca] {\n  background-color: blue;\n}\n.green[data-v-6f2b98ca] {\n  background-color: lime;\n}\n.black[data-v-6f2b98ca] {\n  background-color: black;\n}", ""]);
 
 // exports
 
@@ -7277,7 +7347,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nbody{\n    background-color:#d2d2d2;\n}\n.app {\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden;\n}\n.app-content {\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n    justify-content: center;\n    align-items: center;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    z-index: 30;\n}\nol li {\n    display: flex;\n    justify-content:space-between;\n    min-width: 200px;\n}\nbutton {\n    padding: 8px;\n    text-transform: uppercase;\n}\nsection {\n    display: flex;\n    position: fixed;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    justify-content: center;\n    align-items: center;\n    z-index: 50;\n}\nsection > button{\n    z-index: 60;\n    background-color: white;\n    position: fixed;\n    top: 0;\n    left: 0;\n    border: none;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n    background-color: #d2d2d2;\n    font-size: 25px;\n}\n.app {\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden;\n}\n.app-content {\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n    justify-content: center;\n    align-items: center;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    z-index: 30;\n}\nol li {\n    display: flex;\n    justify-content: space-between;\n    min-width: 200px;\n}\nbutton {\n    padding: 8px;\n    text-transform: uppercase;\n}\nsection {\n    display: flex;\n    position: fixed;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    justify-content: center;\n    align-items: center;\n    z-index: 50;\n}\nsection > button {\n    z-index: 60;\n    background-color: white;\n    position: fixed;\n    top: 0;\n    left: 0;\n    border: none;\n}\n.other-answers {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    align-content: center;\n    min-height: 100vh;\n    flex-direction: column;\n}\n", ""]);
 
 // exports
 
@@ -38764,63 +38834,79 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "app" }, [
-    _c("div", { staticClass: "app-content" }, [
-      _c("ol", [
-        _c("li", [
-          _vm._v("Binary "),
-          _c("button", { on: { click: _vm.triggerBinary } }, [_vm._v("Try")])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("Fibonachi "),
-          _c("button", { on: { click: _vm.triggerFibonachi } }, [_vm._v("Try")])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("Colors "),
-          _c("button", { on: { click: _vm.triggerColors } }, [_vm._v("Try")])
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("Mors "),
-          _c("button", { on: { click: _vm.triggerMors } }, [_vm._v("Try")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "p",
-        [
-          _vm._v("\n            The final computer code:\n        "),
-          _vm._l(_vm.gameMatch, function(game) {
-            return _c("span", [
-              game.answer === null
-                ? _c("span", [_vm._v("X")])
-                : _c("span", [_vm._v(_vm._s(game.answer))])
-            ])
-          })
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.hideCompPuzzels,
+            expression: "!hideCompPuzzels"
+          }
         ],
-        2
-      ),
-      _vm._v(" "),
-      _c(
-        "p",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.gotAllAnswers,
-              expression: "gotAllAnswers"
-            }
+        staticClass: "app-content"
+      },
+      [
+        _c("ol", [
+          _c("li", [
+            _vm._v("Puzzel 1\n                "),
+            _c("button", { on: { click: _vm.triggerBinary } }, [_vm._v("Try")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v("Puzzel 2\n                "),
+            _c("button", { on: { click: _vm.triggerFibonachi } }, [
+              _vm._v("Try")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v("Puzzel 3\n                "),
+            _c("button", { on: { click: _vm.triggerColors } }, [_vm._v("Try")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v("Puzzel 4\n                "),
+            _c("button", { on: { click: _vm.triggerMors } }, [_vm._v("Try")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "p",
+          [
+            _vm._v("\n            1.\n            "),
+            _vm._l(_vm.gameMatch, function(game) {
+              return _c("span", [
+                game.answer === null
+                  ? _c("span", [_vm._v("X")])
+                  : _c("span", [_vm._v(_vm._s(game.answer))])
+              ])
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.gotAllAnswers,
+                expression: "gotAllAnswers"
+              }
+            ]
+          },
+          [
+            _vm._v(
+              "\n            All the other puzzles are in the room\n        "
+            )
           ]
-        },
-        [
-          _vm._v(
-            "\n            All the other puzzles are in the room\n        "
-          )
-        ]
-      )
-    ]),
+        )
+      ]
+    ),
     _vm._v(" "),
     _c(
       "section",
@@ -38936,6 +39022,57 @@ var render = function() {
               1
             )
           ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.hideCompPuzzels,
+            expression: "hideCompPuzzels"
+          }
+        ],
+        staticClass: "other-answers"
+      },
+      [
+        _c("p", [_vm._v("Fill here your codes in you found in the room")]),
+        _vm._v(" "),
+        _c("p", [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.answerTyped,
+                expression: "answerTyped"
+              }
+            ],
+            attrs: { type: "text" },
+            domProps: { value: _vm.answerTyped },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.answerTyped = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("button", { on: { click: _vm.checkAnswers } }, [_vm._v("Check")])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm.foundIndex != null && _vm.foundAnswer != null
+            ? _c("span", { staticClass: "gotten-answer" }, [
+                _vm._v(_vm._s(_vm.foundIndex) + ". " + _vm._s(_vm.foundAnswer))
+              ])
+            : _vm._e()
         ])
       ]
     )
@@ -39128,15 +39265,7 @@ var render = function() {
                   [_vm._v("Check")]
                 )
               ])
-            ]),
-            _vm._v(" "),
-            _vm.gotAnswerRight
-              ? _c("p", { attrs: { id: "answer" } }, [
-                  _vm._v("\n                        The number you needed: "),
-                  _c("br"),
-                  _vm._v(_vm._s(_vm.numberNeeded) + "\n                    ")
-                ])
-              : _vm._e()
+            ])
           ])
         ])
       ])
@@ -39207,15 +39336,7 @@ var render = function() {
                   [_vm._v("Check")]
                 )
               ])
-            ]),
-            _vm._v(" "),
-            _vm.gotAnswerRight
-              ? _c("p", { attrs: { id: "answer" } }, [
-                  _vm._v("\n                        The number you needed: "),
-                  _c("br"),
-                  _vm._v(_vm._s(_vm.numberNeeded) + "\n                    ")
-                ])
-              : _vm._e()
+            ])
           ])
         ])
       ])

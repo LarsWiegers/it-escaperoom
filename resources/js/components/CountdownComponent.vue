@@ -60,7 +60,7 @@
             timer() {
                 let self = this;
                 // Set the date we're counting down to
-                this.countDownDate = new Date(new Date().getTime() + ( 60000  * 20 ) ).getTime();
+                this.countDownDate = new Date(new Date().getTime() + ( 60000  * 8 ) ).getTime();
                 // Update the count down every 1 second
                 this.time = setInterval(function() {
                     // Get todays date and time

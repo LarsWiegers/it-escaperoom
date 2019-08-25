@@ -15,9 +15,6 @@
                                 <button class="button" v-on:click="checkAnswer">Check</button>
                             </label>
                         </p>
-                        <p id="answer" v-if="gotAnswerRight">
-                            The number you needed: <br>{{numberNeeded}}
-                        </p>
                     </div>
                 </div>
             </div>

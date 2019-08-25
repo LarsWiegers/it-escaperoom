@@ -87,6 +87,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
     }
 
     .answers {
@@ -130,15 +131,15 @@
         containerClass: null,
         time: null,
         gotAnswerRight: false,
-        numberNeeded: 6,
+        numberNeeded: 8,
         redNumber: "",
         blueNumber: "",
         greenNumber: "",
         blackNumber: "",
-        redAnswer: 5,
-        blueAnswer: 9,
-        greenAnswer: 16,
-        blackAnswer: 64,
+        redAnswer: 1,
+        blueAnswer: 2,
+        greenAnswer: 3,
+        blackAnswer: 4,
         currentIndex: 1,
         colors: [
           {'colorName': 'red', index: 0},
@@ -165,10 +166,10 @@
         },
         checkAnswer()
         {
-          if (this.redAnswer == this.redNumber &&
-              this.blueAnswer == this.blueNumber &&
-              this.greenAnswer == this.greenNumber &&
-              this.blackAnswer == this.blackNumber) {
+          if (this.colors[0].index == this.redAnswer &&
+              this.colors[1].index == this.blueAnswer &&
+              this.colors[2].index == this.greenAnswer &&
+              this.colors[3].index == this.blackAnswer) {
             this.containerClass = "right";
             clearInterval(this.time);
             this.gotAnswerRight = true;
