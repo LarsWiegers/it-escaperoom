@@ -39413,7 +39413,7 @@ var render = function() {
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-body" }, [
             _c("audio", {
-              attrs: { controls: "", src: "/sounds/morse_code.wav" }
+              attrs: { controls: "", src: "sounds/morse_code.wav" }
             }),
             _vm._v(" "),
             _c("input", {
