@@ -4,7 +4,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <audio  controls src="/sounds/morse_code.wav">
+                        <audio  controls src="sounds/morse_code.wav">
                         </audio>
                         <input v-model="givenAnswer">
                         <button v-on:click="checkAnswer">
